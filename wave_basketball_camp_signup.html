@@ -1,302 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wave Basketball Summer Camp — Registration 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #F5F5F0; color: #1a1a1a; min-height: 100vh; padding: 2rem 1rem; }
-    .page-wrap { max-width: 680px; margin: 0 auto; }
-    .header { background: #085041; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; color: #E1F5EE; text-align: center; }
-    .header h1 { font-size: 24px; font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-    .header p { font-size: 14px; opacity: 0.85; }
-    .section { background: #ffffff; border: 0.5px solid rgba(0,0,0,0.12); border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; }
-    .section-title { font-size: 13px; font-weight: 600; color: #0F6E56; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem; display: flex; align-items: center; gap: 8px; }
-    .section-title i { font-size: 18px; }
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media (max-width: 520px) { .grid-2 { grid-template-columns: 1fr; } }
-    .field { display: flex; flex-direction: column; gap: 4px; }
-    .field.full { grid-column: 1 / -1; }
-    .field label { font-size: 12px; color: #555; font-weight: 500; }
-    .required { color: #E24B4A; margin-left: 2px; }
-    input, select, textarea { width: 100%; padding: 9px 11px; border: 0.5px solid rgba(0,0,0,0.2); border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; color: #1a1a1a; background: #ffffff; transition: border-color 0.15s, box-shadow 0.15s; appearance: auto; }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: #1D9E75; box-shadow: 0 0 0 3px rgba(29,158,117,0.15); }
-    textarea { resize: vertical; min-height: 72px; }
-    .radio-group { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
-    .radio-opt { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #1a1a1a; cursor: pointer; }
-    .radio-opt input { width: auto; }
-    .checkbox-row { display: flex; align-items: flex-start; gap: 8px; margin-top: 4px; cursor: pointer; }
-    .checkbox-row input { width: auto; margin-top: 3px; flex-shrink: 0; }
-    .checkbox-row span { font-size: 13px; color: #555; line-height: 1.55; }
-    .divider { border: none; border-top: 0.5px solid rgba(0,0,0,0.1); margin: 14px 0; }
-    .fee-box { background: #F5F5F0; border-radius: 8px; padding: 12px 14px; margin-top: 10px; }
-    .fee-row { display: flex; justify-content: space-between; align-items: center; padding: 3px 0; }
-    .fee-label { font-size: 13px; color: #666; }
-    .fee-amount { font-size: 20px; font-weight: 600; color: #085041; }
-    .fee-discount { font-size: 13px; color: #0F6E56; display: flex; align-items: center; gap: 4px; }
-    .fee-total-row { font-size: 15px; font-weight: 600; color: #085041; border-top: 0.5px solid rgba(0,0,0,0.1); margin-top: 8px; padding-top: 8px; display: flex; justify-content: space-between; }
-    .hint { font-size: 13px; color: #777; margin-bottom: 12px; line-height: 1.5; }
-    .submit-btn { width: 100%; padding: 14px; background: #1D9E75; color: #E1F5EE; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; font-family: 'Inter', sans-serif; margin-top: 0.5rem; transition: background 0.15s; letter-spacing: 0.01em; }
-    .submit-btn:hover { background: #0F6E56; }
-    .submit-btn:active { background: #085041; }
-    .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
-    .error-msg { background: #FAECE7; border: 0.5px solid #993C1D; color: #712B13; border-radius: 8px; padding: 12px 14px; font-size: 13px; margin-top: 12px; display: none; }
-    .success { display: none; text-align: center; padding: 3rem 2rem; background: #E1F5EE; border-radius: 12px; border: 0.5px solid #0F6E56; }
-    .success i { font-size: 48px; color: #0F6E56; display: block; margin-bottom: 12px; }
-    .success h2 { font-size: 20px; font-weight: 600; color: #085041; margin-bottom: 8px; }
-    .success p { font-size: 14px; color: #0F6E56; line-height: 1.6; }
-    .footer { text-align: center; font-size: 12px; color: #999; margin-top: 2rem; padding-bottom: 1rem; }
-    .footer a { color: #0F6E56; text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
-  </style>
-</head>
-<body>
-  <div class="page-wrap">
 
-    <div class="header">
-      <h1><i class="ti ti-ball-basketball"></i> Wave Basketball Summer Camp</h1>
-      <p>Registration Form &middot; Summer 2026 &middot; wavecoacheli.com</p>
-    </div>
+Wave Basketball Summer Camp
+Registration Form · Summer 2026 · wavecoacheli.com
 
-    <div id="form-area">
-      <!-- Formspree endpoint — replace YOUR_FORM_ID after creating your form at formspree.io -->
-      <form id="camp-form" action="https://formspree.io/f/xdavwrqk" method="POST">
+CAMPER INFORMATION
+First name *
 
-        <!-- Hidden field so Formspree sends to eli@wavecoacheli.com -->
-        <input type="hidden" name="_replyto" value="eli@wavecoacheli.com">
-        <input type="hidden" name="_subject" value="New Wave Basketball Camp Registration 2026">
+Last name *
 
-        <!-- CAMPER INFO -->
-        <div class="section">
-          <div class="section-title"><i class="ti ti-user"></i> Camper information</div>
-          <div class="grid-2">
-            <div class="field"><label>First name <span class="required">*</span></label><input type="text" name="camper_first_name" placeholder="First name" required></div>
-            <div class="field"><label>Last name <span class="required">*</span></label><input type="text" name="camper_last_name" placeholder="Last name" required></div>
-            <div class="field"><label>Date of birth <span class="required">*</span></label><input type="date" name="camper_dob" required></div>
-            <div class="field"><label>Age</label><input type="number" name="camper_age" placeholder="Age" min="5" max="18"></div>
-            <div class="field">
-              <label>Grade entering fall 2026 <span class="required">*</span></label>
-              <select name="camper_grade" required>
-                <option value="">Select...</option>
-                <option>3rd grade</option>
-                <option>4th grade</option>
-                <option>5th grade</option>
-              </select>
-            </div>
-            <div class="field"><label>School</label><input type="text" name="camper_school" placeholder="School name"></div>
-            <div class="field">
-              <label>T-shirt size <span class="required">*</span></label>
-              <select name="camper_tshirt_size" required>
-                <option value="">Select...</option>
-                <option>Youth S</option>
-                <option>Youth M</option>
-                <option>Youth L</option>
-              </select>
-            </div>
-          </div>
-        </div>
+Date of birth *
+Age
 
-        <!-- SESSION SELECTION -->
-        <div class="section">
-          <div class="section-title"><i class="ti ti-calendar"></i> Session selection</div>
-          <div class="field">
-            <label>Camp session <span class="required">*</span></label>
-            <select id="session-select" name="camp_session" onchange="updateFee()" required>
-              <option value="">Select a session...</option>
-              <option value="Week 1 — August 10–14">Week 1 — August 10–14</option>
-              <option value="Week 2 — August 17–21">Week 2 — August 17–21</option>
-              <option value="Both weeks (Discount applied - $50 Off)">Both weeks (Discount applied - $50 Off)</option>
-            </select>
-          </div>
-          <div class="fee-box" id="fee-box" style="display:none;">
-            <div class="fee-row">
-              <span class="fee-label">Registration fee</span>
-              <span class="fee-amount" id="fee-amount"></span>
-            </div>
-            <div id="discount-row" style="display:none;" class="fee-row">
-              <span class="fee-discount"><i class="ti ti-tag"></i> Both weeks discount</span>
-              <span class="fee-discount">− $50</span>
-            </div>
-            <div id="total-row" style="display:none;" class="fee-total-row">
-              <span>Total</span>
-              <span id="fee-total"></span>
-            </div>
-          </div>
-        </div>
+Grade entering fall 2026 *
+                Select...
+                3rd grade
+                4th grade
+                5th grade
+              
+School
 
-        <!-- PARENT / GUARDIAN -->
-        <div class="section">
-          <div class="section-title"><i class="ti ti-home"></i> Parent / guardian information</div>
-          <div class="grid-2">
-            <div class="field"><label>Parent/guardian first name <span class="required">*</span></label><input type="text" name="parent_first_name" placeholder="First name" required></div>
-            <div class="field"><label>Parent/guardian last name <span class="required">*</span></label><input type="text" name="parent_last_name" placeholder="Last name" required></div>
-            <div class="field">
-              <label>Relationship to camper <span class="required">*</span></label>
-              <select name="parent_relationship" required>
-                <option value="">Select...</option>
-                <option>Mother</option>
-                <option>Father</option>
-                <option>Guardian</option>
-                <option>Grandparent</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="field"><label>Primary phone <span class="required">*</span></label><input type="tel" name="parent_phone_primary" placeholder="(555) 000-0000" required></div>
-            <div class="field"><label>Secondary phone</label><input type="tel" name="parent_phone_secondary" placeholder="(555) 000-0000"></div>
-            <div class="field"><label>Email address <span class="required">*</span></label><input type="email" name="email" placeholder="email@example.com" required></div>
-            <div class="field full"><label>Home address <span class="required">*</span></label><input type="text" name="home_address" placeholder="Street address, city, state, zip" required></div>
-          </div>
-        </div>
+T-shirt size *
+                Select...
+                Youth S
+                Youth M
+                Youth L
+              
 
-        <!-- EMERGENCY CONTACTS -->
-        <div class="section">
-          <div class="section-title"><i class="ti ti-phone-call"></i> Emergency contacts</div>
-          <p class="hint">Please provide at least two emergency contacts other than the parent/guardian above.</p>
-          <div class="grid-2">
-            <div class="field"><label>Emergency contact 1 — name <span class="required">*</span></label><input type="text" name="emergency1_name" placeholder="Full name" required></div>
-            <div class="field"><label>Relationship <span class="required">*</span></label><input type="text" name="emergency1_relationship" placeholder="e.g. Aunt, Grandparent" required></div>
-            <div class="field"><label>Phone (primary) <span class="required">*</span></label><input type="tel" name="emergency1_phone_primary" placeholder="(555) 000-0000" required></div>
-            <div class="field"><label>Phone (secondary)</label><input type="tel" name="emergency1_phone_secondary" placeholder="(555) 000-0000"></div>
-          </div>
-          <hr class="divider">
-          <div class="grid-2">
-            <div class="field"><label>Emergency contact 2 — name</label><input type="text" name="emergency2_name" placeholder="Full name"></div>
-            <div class="field"><label>Relationship</label><input type="text" name="emergency2_relationship" placeholder="e.g. Uncle, Family friend"></div>
-            <div class="field"><label>Phone (primary)</label><input type="tel" name="emergency2_phone_primary" placeholder="(555) 000-0000"></div>
-            <div class="field"><label>Phone (secondary)</label><input type="tel" name="emergency2_phone_secondary" placeholder="(555) 000-0000"></div>
-          </div>
-          <hr class="divider">
-          <div class="field">
-            <label>Authorized pickup persons (if different from above)</label>
-            <textarea name="authorized_pickup" placeholder="List names and relationship of anyone authorized to pick up your child"></textarea>
-          </div>
-        </div>
+SESSION SELECTION
+Camp session *
+              Select a session...
+              Week 1 — August 10–14
+              Week 2 — August 17–21
+              Both weeks (Discount applied - $50 Off)
+            
 
-        <!-- MEDICAL INFO -->
-        <div class="section">
-          <div class="section-title"><i class="ti ti-medical-cross"></i> Medical information</div>
-          <div class="grid-2">
-            <div class="field"><label>Physician / pediatrician name</label><input type="text" name="physician_name" placeholder="Dr. Last name"></div>
-            <div class="field"><label>Physician phone</label><input type="tel" name="physician_phone" placeholder="(555) 000-0000"></div>
-            <div class="field full"><label>Allergies (food, medication, environmental) <span class="required">*</span></label><textarea name="allergies" placeholder="List any known allergies or write 'None'" required></textarea></div>
-            <div class="field full"><label>Current medications</label><textarea name="medications" placeholder="List any medications your child takes, including dosage, or write 'None'"></textarea></div>
-            <div class="field full"><label>Medical conditions or physical limitations we should be aware of</label><textarea name="medical_conditions" placeholder="Asthma, diabetes, recent injuries, etc., or write 'None'"></textarea></div>
-            <div class="field full"><label>Dietary restrictions</label><input type="text" name="dietary_restrictions" placeholder="Vegetarian, gluten-free, nut allergy, etc., or write 'None'"></div>
-          </div>
-          <hr class="divider">
-          <div class="field">
-            <label style="font-size:13px;font-weight:500;color:#1a1a1a;">Does your child carry an EpiPen or inhaler?</label>
-            <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="epipen_inhaler" value="EpiPen"> EpiPen</label>
-              <label class="radio-opt"><input type="radio" name="epipen_inhaler" value="Inhaler"> Inhaler</label>
-              <label class="radio-opt"><input type="radio" name="epipen_inhaler" value="Both"> Both</label>
-              <label class="radio-opt"><input type="radio" name="epipen_inhaler" value="Neither"> Neither</label>
-            </div>
-          </div>
-        </div>
+PARENT / GUARDIAN INFORMATION
+Parent/guardian first name *
 
-        <!-- WAIVERS -->
-        <div class="section">
-          <div class="section-title"><i class="ti ti-writing"></i> Waivers &amp; agreements</div>
-          <div style="display:flex;flex-direction:column;gap:10px;">
-            <label class="checkbox-row"><input type="checkbox" name="waiver_activities" value="Agreed" required><span>I give permission for my child to participate in all camp activities including drills, scrimmages, and physical conditioning.</span></label>
-            <label class="checkbox-row"><input type="checkbox" name="waiver_medical" value="Agreed" required><span>I authorize camp staff to seek emergency medical treatment for my child if I cannot be reached.</span></label>
-            <label class="checkbox-row"><input type="checkbox" name="waiver_photos" value="Agreed"><span>I give permission for photos/videos of my child to be used for Wave Basketball promotional materials.</span></label>
-            <label class="checkbox-row"><input type="checkbox" name="waiver_liability" value="Agreed" required><span>I release Wave Basketball Camp, its coaches, and staff from liability for injuries sustained during normal camp activities.</span></label>
-          </div>
-          <hr class="divider">
-          <div class="grid-2">
-            <div class="field"><label>Parent/guardian signature (type full name) <span class="required">*</span></label><input type="text" name="signature" placeholder="Type your full name" required></div>
-            <div class="field"><label>Today's date <span class="required">*</span></label><input type="date" name="signature_date" required></div>
-          </div>
-        </div>
+Parent/guardian last name *
 
-        <!-- ADDITIONAL NOTES -->
-        <div class="section">
-          <div class="section-title"><i class="ti ti-message"></i> Additional notes</div>
-          <div class="field">
-            <label>Anything else you'd like us to know about your child?</label>
-            <textarea name="additional_notes" placeholder="Coaching style preferences, social notes, anything helpful for our staff..."></textarea>
-          </div>
-        </div>
+Relationship to camper *
+                Select...
+                Mother
+                Father
+                Guardian
+                Grandparent
+                Other
+              
+Primary phone *
 
-        <div class="error-msg" id="error-msg">
-          <i class="ti ti-alert-circle"></i> Something went wrong submitting the form. Please try again or email us directly at <strong>eli@wavecoacheli.com</strong>.
-        </div>
+Secondary phone
 
-        <button type="submit" class="submit-btn" id="submit-btn">Submit registration</button>
+Email address *
 
-      </form>
-    </div><!-- end form-area -->
+Home address *
 
-    <div class="success" id="success">
-      <i class="ti ti-circle-check"></i>
-      <h2>Registration submitted!</h2>
-      <p>Thank you for registering for Wave Basketball Summer Camp.<br>You'll receive a confirmation email shortly.</p>
-    </div>
 
-    <div class="footer">
-      &copy; 2026 Wave Basketball &mdash; <a href="https://wavecoacheli.com">wavecoacheli.com</a>
-    </div>
+EMERGENCY CONTACTS
+Please provide at least two emergency contacts other than the parent/guardian above.
+Emergency contact 1 — name *
 
-  </div><!-- end page-wrap -->
+Relationship *
 
-  <script>
-    function updateFee() {
-      var sel = document.getElementById('session-select').value;
-      var box = document.getElementById('fee-box');
-      var amt = document.getElementById('fee-amount');
-      var discRow = document.getElementById('discount-row');
-      var totalRow = document.getElementById('total-row');
-      var total = document.getElementById('fee-total');
-      if (!sel) { box.style.display = 'none'; return; }
-      box.style.display = 'block';
-      if (sel.indexOf('Both') !== -1) {
-        amt.textContent = '$1,190';
-        discRow.style.display = 'flex';
-        totalRow.style.display = 'flex';
-        total.textContent = '$1,140';
-      } else {
-        amt.textContent = '$595';
-        discRow.style.display = 'none';
-        totalRow.style.display = 'none';
-      }
-    }
+Phone (primary) *
 
-    var form = document.getElementById('camp-form');
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var btn = document.getElementById('submit-btn');
-      var errMsg = document.getElementById('error-msg');
-      btn.disabled = true;
-      btn.textContent = 'Submitting...';
-      errMsg.style.display = 'none';
+Phone (secondary)
 
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(function(response) {
-        if (response.ok) {
-          document.getElementById('form-area').style.display = 'none';
-          document.getElementById('success').style.display = 'block';
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          throw new Error('Server error');
-        }
-      })
-      .catch(function() {
-        btn.disabled = false;
-        btn.textContent = 'Submit registration';
-        errMsg.style.display = 'block';
-      });
-    });
-  </script>
-</body>
-</html>
+
+Emergency contact 2 — name
+
+Relationship
+
+Phone (primary)
+
+Phone (secondary)
+
+
+Authorized pickup persons (if different from above)
+
+MEDICAL INFORMATION
+Physician / pediatrician name
+
+Physician phone
+
+Allergies (food, medication, environmental) *
+Current medications
+Medical conditions or physical limitations we should be aware of
+Dietary restrictions
+
+
+Does your child carry an EpiPen or inhaler?
+
+EpiPen
+
+Inhaler
+
+Both
+
+Neither
+
+WAIVERS & AGREEMENTS
+
+I give permission for my child to participate in all camp activities including drills, scrimmages, and physical conditioning.
+
+I authorize camp staff to seek emergency medical treatment for my child if I cannot be reached.
+
+I give permission for photos/videos of my child to be used for Wave Basketball promotional materials.
+
+I release Wave Basketball Camp, its coaches, and staff from liability for injuries sustained during normal camp activities.
+
+Parent/guardian signature (type full name) *
+
+Today's date *
+
+ADDITIONAL NOTES
+Anything else you'd like us to know about your child?
+Submit registration
+© 2026 Wave Basketball — wavecoacheli.com
